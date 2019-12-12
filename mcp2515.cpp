@@ -51,11 +51,11 @@ MCP2515::ERROR MCP2515::reset(void)
 
     modifyRegister(MCP_RXB0CTRL,
                    RXBnCTRL_RXM_MASK | RXB0CTRL_BUKT,
-                   RXBnCTRL_RXM_STDEXT | RXB0CTRL_BUKT);
-    modifyRegister(MCP_RXB1CTRL, RXBnCTRL_RXM_MASK, RXBnCTRL_RXM_STDEXT);
+                   RXBnCTRL_RXM_MASK | RXB0CTRL_BUKT);
+    modifyRegister(MCP_RXB1CTRL, RXBnCTRL_RXM_MASK, RXBnCTRL_RXM_MASK);
 
     // clear filters and masks
-    /*RXF filters[] = {RXF0, RXF1, RXF2, RXF3, RXF4, RXF5};
+    RXF filters[] = {RXF0, RXF1, RXF2, RXF3, RXF4, RXF5};
     for (int i=0; i<6; i++) {
         ERROR result = setFilter(filters[i], true, 0);
         if (result != ERROR_OK) {
@@ -69,7 +69,7 @@ MCP2515::ERROR MCP2515::reset(void)
         if (result != ERROR_OK) {
             return result;
         }
-    }*/
+    }
 
     return ERROR_OK;
 }
